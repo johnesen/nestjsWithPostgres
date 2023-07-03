@@ -1,55 +1,43 @@
-import {
-    Body,
-    Controller,
-    Get,
-    HttpCode,
-    Param,
-    Post,
-    UsePipes,
-    ValidationPipe,
-    ParseUUIDPipe,
-    UseGuards
-} from '@nestjs/common';
-import { UserService } from './user.service';
-import { CreateUserDto, LoginUserDto } from './dto/users.dto';
-import { JwtAuthGuard } from './guards/jwt.guard';
+import { UserService } from "./user.service";
+import { CreateUserDto, LoginUserDto } from "./dto/users.dto";
+import { JwtAuthGuard } from "./guards/jwt.guard";
+import { User } from "./user.entity";
+import * as common from "@nestjs/common";
 
-@Controller('user')
+
+@common.Controller("user")
 export class UserController {
 
-    constructor(private readonly userService: UserService) { };
+    constructor(private readonly userService: UserService) { }
 
-    @Post("register")
-    @HttpCode(201)
-    @UsePipes(ValidationPipe)
-    async createUser(@Body() dto: CreateUserDto) {
-        const user = await this.userService.creatUser(dto);
-        return { id: user.id, username: user.username, email: user.email }
+    @common.Post("register")
+    @common.HttpCode(201)
+    @common.UsePipes(common.ValidationPipe)
+    async createUser(@common.Body() dto: CreateUserDto): Promise<object> {
+        const user: User = await this.userService.creatUser(dto);
+        return { id: user.id, username: user.username, email: user.email };
 
     }
 
-    @UsePipes(new ValidationPipe())
-    @HttpCode(200)
-    @Post('login')
-    async login(@Body() { username, password }: LoginUserDto) {
-        const user = await this.userService.getUser(username, password);
+    @common.UsePipes(new common.ValidationPipe())
+    @common.HttpCode(200)
+    @common.Post("login")
+    async login(@common.Body() { username, password }: LoginUserDto): Promise<object> {
         return await this.userService.login(username, password);
     }
 
-    @Get()
-    @HttpCode(200)
-    async getAllUsers() {
+    @common.Get()
+    @common.HttpCode(200)
+    async getAllUsers(): Promise<User[]> {
         return this.userService.getAllUsers();
     }
 
-    @Get(":id")
-    @UseGuards(JwtAuthGuard)
-    @HttpCode(200)
-    async getUserByID(@Param("id", new ParseUUIDPipe()) id: string) {
+    @common.Get(":id")
+    @common.UseGuards(JwtAuthGuard)
+    @common.HttpCode(200)
+    async getUserByID(@common.Param("id", new common.ParseUUIDPipe()) id: string): Promise<object> {
         return this.userService.findUserById(id);
     }
-
-
 
 
 }
