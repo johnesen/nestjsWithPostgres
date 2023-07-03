@@ -1,0 +1,276 @@
+{
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended"
+  ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "project": true,
+    "tsconfigRootDir": "."
+  },
+  "rules": {
+    "eqeqeq": [
+      "error",
+      "always",
+      {
+        "null": "ignore"
+      }
+    ],
+    "quotes": [
+      "error",
+      "double"
+    ],
+    "keyword-spacing": [
+      "error",
+      {
+        "before": true
+      }
+    ],
+    "prefer-const": "error",
+    "indent": [
+      "error",
+      4
+    ],
+    "semi": [
+      "error",
+      "always"
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "MemberExpression[property.name='log']",
+        "message": "Ну ты и лох консольный"
+      }
+    ],
+    "no-mixed-operators": [
+      "error",
+      {
+        "groups": [
+          [
+            "+",
+            "-",
+            "*",
+            "/",
+            "%",
+            "**"
+          ],
+          [
+            "&",
+            "|",
+            "^",
+            "~",
+            "<<",
+            ">>",
+            ">>>"
+          ],
+          [
+            "==",
+            "!=",
+            "===",
+            "!==",
+            ">",
+            ">=",
+            "<",
+            "<="
+          ],
+          [
+            "&&",
+            "||"
+          ],
+          [
+            "in",
+            "instanceof"
+          ]
+        ],
+        "allowSamePrecedence": true
+      }
+    ],
+    "no-empty": [
+      "error",
+      {
+        "allowEmptyCatch": true
+      }
+    ],
+    "no-trailing-spaces": "error",
+    "no-var": "error",
+    "no-self-compare": "error",
+    "no-eval": "error",
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 2,
+        "maxEOF": 0,
+        "maxBOF": 0
+      }
+    ],
+    "no-multi-spaces": [
+      "error",
+      {
+        "ignoreEOLComments": true,
+        "exceptions": {
+          "PropertyAssignment": false
+        }
+      }
+    ],
+    "arrow-spacing": [
+      "error",
+      {
+        "before": true,
+        "after": true
+      }
+    ],
+    "no-useless-computed-key": "error",
+    "space-in-parens": [
+      "error",
+      "never"
+    ],
+    "space-before-blocks": "error",
+    "no-whitespace-before-property": "error",
+    "key-spacing": "error",
+    "no-lone-blocks": "error",
+    "computed-property-spacing": [
+      "error",
+      "always"
+    ],
+    "block-spacing": [
+      "error",
+      "always"
+    ],
+    "array-bracket-newline": [
+      "error",
+      "consistent"
+    ],
+    "object-curly-newline": [
+      "error",
+      {
+        "multiline": true
+      }
+    ],
+    "array-element-newline": [
+      "error",
+      {
+        "minItems": 3
+      }
+    ],
+    "object-property-newline": [
+      "error",
+      {
+        "allowAllPropertiesOnSameLine": true
+      }
+    ],
+    // "array-bracket-spacing": [
+    //   "error",
+    //   "always"
+    // ],
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "eol-last": [
+      "error",
+      "always"
+    ],
+    "comma-spacing": [
+      "error",
+      {
+        "before": false,
+        "after": true
+      }
+    ],
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "space-infix-ops": "error",
+    "comma-dangle": [
+      "error",
+      "always-multiline"
+    ],
+    "import/no-duplicates": "error",
+    "import/no-useless-path-segments": "error",
+    "import/newline-after-import": [
+      "error",
+      {
+        "count": 2
+      }
+    ],
+    "import/extensions": 0,
+    "import/no-unresolved": 0,
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          "index",
+          "sibling",
+          "parent",
+          "internal",
+          "external",
+          "builtin",
+          "object",
+          "type"
+        ]
+      }
+    ],
+    "react/react-in-jsx-scope": "off",
+    //test
+    //запрещается использовать String, Boolean, Number как тип. https://typescript-eslint.io/rules/ban-types
+    "@typescript-eslint/ban-types": "error",
+    //Запрещается удтверждать тип классов таких как Array, Map, Set и.т.д с левой стороны (left-hand side)
+    // https://typescript-eslint.io/rules/consistent-generic-constructors
+    "@typescript-eslint/consistent-generic-constructors": [
+      "error",
+      "constructor"
+    ],
+    //Запрещается описывать/типизировать объект черезе ключевое слово type. только interface
+    //https://typescript-eslint.io/rules/consistent-type-definitions
+    "@typescript-eslint/consistent-type-definitions": [
+      "error",
+      "interface"
+    ],
+    //Запрещает не описывать какой тип возврощает функция
+    //https://typescript-eslint.io/rules/explicit-function-return-type
+    "@typescript-eslint/explicit-function-return-type": "error",
+    //запрещает в interface описывать функцию таким способом "func(arg: string): number"
+    //https://typescript-eslint.io/rules/method-signature-style
+    "@typescript-eslint/method-signature-style": "error",
+    //Запрещает дублировать значения в enum
+    //https://typescript-eslint.io/rules/no-duplicate-enum-values
+    "@typescript-eslint/no-duplicate-enum-values": "error",
+    //Запрещает дублировать значение в type
+    //https://typescript-eslint.io/rules/no-duplicate-type-constituents
+    "@typescript-eslint/no-duplicate-type-constituents": "error",
+    //Запрещает писать any
+    //https://typescript-eslint.io/rules/no-explicit-any
+    // "@typescript-eslint/no-explicit-any": "error",
+    //Не позовляет писать больше одного "оператора ненулевого утверждения" (foo!)
+    //https://typescript-eslint.io/rules/no-extra-non-null-assertion
+    "@typescript-eslint/no-extra-non-null-assertion": "error",
+    //https://typescript-eslint.io/rules/no-non-null-asserted-nullish-coalescing
+    "@typescript-eslint/no-non-null-asserted-nullish-coalescing": "error",
+    //Запрещает писать оператор ненулевого утверждения после .?
+    //https://typescript-eslint.io/rules/no-non-null-asserted-optional-chain
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "error",
+    //Запрещает писать переопределение типов (any | 'foo') (boolean | false)
+    //https://typescript-eslint.io/rules/no-redundant-type-constituents
+    "@typescript-eslint/no-redundant-type-constituents": "error",
+    //Запрещает писать бесполезные проверки bool типа с bool типом (someCondition === true)
+    //https://typescript-eslint.io/rules/no-unnecessary-boolean-literal-compare
+    "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+    //Запрещает писать необязательные проверки
+    //https://typescript-eslint.io/rules/no-unnecessary-condition
+    "@typescript-eslint/no-unnecessary-condition": "error",
+    //Запрещает сранивать значения enum`ов с не значением enum`а
+    //https://typescript-eslint.io/rules/no-unsafe-enum-comparison
+    "@typescript-eslint/no-unsafe-enum-comparison": "error",
+    //Запрщает писать "some as string" вместо этого используется "some!"
+    //https://typescript-eslint.io/rules/non-nullable-type-assertion-style
+    "@typescript-eslint/non-nullable-type-assertion-style": "error"
+  }
+}

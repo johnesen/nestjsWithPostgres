@@ -1,16 +1,17 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
+
 @Entity()
 export class User {
     @PrimaryGeneratedColumn("uuid")
-    id: string
+    id: string;
 
     @Column({ nullable: false })
-    username: string
+    username: string;
 
     @Column({ nullable: false })
-    email: string
+    email: string;
 
     @Column({ nullable: false })
-    hashedPassword: string
+    hashedPassword: string;
 }
